@@ -1,0 +1,27 @@
+# This is the workflow for the pull request
+#
+name: Pull Request
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  lint-code:
+    name: '▶️ actions'
+    uses: ATOS-Actions/actions/.github/workflows/lint-code.yml@v1
+
+  test:
+    name: '▶📌'
+    needs: [lint-code]
+    uses: ./.github/workflows/test.yml
+
+  lint-pr:
+    name: '▶️ actions'
+    uses: ATOS-Actions/actions/.github/workflows/lint-pr.yml@v1
+
+  dependabot:
+    name: '▶️ actions'
+    uses: ATOS-Actions/actions/.github/workflows/dependabot.yml@v1
+    secrets:
+      GH_TOKEN: ${{ secrets.GH_TOKEN  }}
