@@ -31,7 +31,7 @@ jobs:
       - name: '✅ Test files'
         uses: ./
         with:
-          name: build
+          name: artifact
           path: |
             README.md
             LICENSE
@@ -40,7 +40,7 @@ jobs:
       - name: '✅ Test files do not exist'
         uses: ./
         with:
-          name: build
+          name: 'no_artifact'
           path: |
             dist/
             packages/**/dist/

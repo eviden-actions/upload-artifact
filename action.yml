@@ -30,18 +30,18 @@ runs:
       run: |
         path="${{ inputs.path }}"
         path="${path//'\n\r'/' '}"
-        echo "${path}"
-        tar -cvf artifact.tar ${path} 2>/dev/null
-        tar tf artifact.tar | read || rm artifact.tar
+        echo "Adding ${path} to ${{ inputs.name }}.tar"
+        tar -cvf ${{ inputs.name }}.tar ${path} --ignore-failed-read
+        tar tf ${{ inputs.name }}.tar | read || rm artifact.tar
 
     - name: '📤 upload artifact'
       uses: actions/upload-artifact@v3
       with:
         name: ${{ inputs.name }}
-        path: artifact.tar
+        path: ${{ inputs.name }}.tar
         if-no-files-found: ${{ inputs.if-no-files-found }}
         retention-days: ${{ inputs.retention-days }}
 
     - name: '🧹 cleanup'
       shell: 'bash'
-      run: rm -f artifact.tar
+      run: rm -f ${{ inputs.name }}.tar

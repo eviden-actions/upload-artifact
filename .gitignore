@@ -85,3 +85,4 @@ src/scripts/.baseDir.ts
 build/
 dist/
 reports/
+*.tar
