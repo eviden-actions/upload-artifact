@@ -1,14 +1,21 @@
 {
-	"name": "@atos-actions/template",
-	"description": "Template repository for @ATOS-Actions organization",
+	"name": "@atos-actions/upload-artifact",
+	"description": "Upload a tar build artifact that can be used by subsequent workflow steps",
+	"keywords": [
+		"Actions",
+		"GitHub",
+		"Artifacts",
+		"Upload",
+		"tar"
+	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/ATOS-Actions/template.git"
+		"url": "https://github.com/ATOS-Actions/upload-artifact.git"
 	},
-	"bugs": "https://github.com/ATOS-Actions/template/issues",
+	"bugs": "https://github.com/ATOS-Actions/upload-artifact/issues",
 	"license": "MIT",
 	"private": "true",
-	"version": "1.0.0",
+	"version": "0.0.0",
 	"engines": {
 		"node": ">= 16.0.0",
 		"npm": ">= 8.0.0"
