@@ -7,7 +7,7 @@ See also [download-artifact](https://github.com/ATOS-Actions/download-artifact).
 
 [![Release](https://github.com/ATOS-Actions/upload-artifact/actions/workflows/on_push.yml/badge.svg#main)](https://github.com/ATOS-Actions/upload-artifact/actions/workflows/on_push.yml)
 
-# Usage
+## Usage
 
 See [action.yml](action.yml)
 

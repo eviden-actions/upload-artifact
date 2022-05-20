@@ -28,7 +28,9 @@ runs:
     - name: '📦 tar inputs'
       shell: 'bash'
       run: |
-        tar -cvf artifact.tar ${{ inputs.path }} 2>/dev/null
+        path="${{ inputs.path }}"
+        path="${path//'\n\r'/' '}"	
+        tar -cvf artifact.tar ${path} 2>/dev/null
         tar tf artifact.tar | read || rm artifact.tar
 
     - name: '📤 upload artifact'
