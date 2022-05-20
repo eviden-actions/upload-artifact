@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/ATOS-Actions/upload-artifact/compare/v1.0.0...v1.0.1) (2022-05-20)
+
+
+### Bug Fixes
+
+* split new line handling ([2cf5caa](https://github.com/ATOS-Actions/upload-artifact/commit/2cf5caa55cf7765e58043737ecce99bccfd0b4f8))
+
 # 1.0.0 (2022-05-20)
 
 
