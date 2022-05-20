@@ -34,7 +34,7 @@ jobs:
           name: build
           path: |
             README.md
-            CHANGELOG.md
+            LICENSE
           retention-days: 1
 
       - name: '✅ Test files do not exist'

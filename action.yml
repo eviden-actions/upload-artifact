@@ -29,7 +29,8 @@ runs:
       shell: 'bash'
       run: |
         path="${{ inputs.path }}"
-        path="${path//'\n\r'/' '}"	
+        path="${path//'\n\r'/' '}"
+        echo "${path}"
         tar -cvf artifact.tar ${path} 2>/dev/null
         tar tf artifact.tar | read || rm artifact.tar
 
