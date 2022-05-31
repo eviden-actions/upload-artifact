@@ -12,7 +12,7 @@ jobs:
     uses: ATOS-Actions/actions/.github/workflows/lint-code.yml@v1
 
   test:
-    name: '▶📌'
+    name: '📌'
     needs: [lint-code]
     uses: ./.github/workflows/test.yml
 
