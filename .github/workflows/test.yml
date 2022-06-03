@@ -35,7 +35,7 @@ jobs:
           path: |
             README.md
             LICENSE
-          retention-days: 1
+          retention-days: 5
 
       - name: '✅ Test files do not exist'
         uses: ./
@@ -44,7 +44,16 @@ jobs:
           path: |
             dist/
             packages/**/dist/
-          retention-days: 1
+          retention-days: 5
+
+      - name: '✅ Test partial'
+        uses: ./
+        with:
+          name: 'partial_artifact'
+          path: |
+            dist/
+            README.md
+          retention-days: 5
 
       - name: '🧹 Cleanup workspace'
         uses: ATOS-Actions/clean-self-hosted-runner@v1
