@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/ATOS-Actions/upload-artifact/compare/v1.0.1...v1.0.2) (2022-06-03)
+
+
+### Bug Fixes
+
+* artifact is not uploaded when some path do not exist ([#6](https://github.com/ATOS-Actions/upload-artifact/issues/6)) ([a412ca4](https://github.com/ATOS-Actions/upload-artifact/commit/a412ca45665c703332e6ba8f12dbb1e0146a9d32))
+
 ## [1.0.1](https://github.com/ATOS-Actions/upload-artifact/compare/v1.0.0...v1.0.1) (2022-05-20)
 
 
