@@ -25,4 +25,4 @@ jobs:
     needs: [lint-code, test]
     uses: ATOS-Actions/actions/.github/workflows/release.yml@v1
     secrets:
-      GH_TOKEN: ${{ secrets.GH_TOKEN  }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
