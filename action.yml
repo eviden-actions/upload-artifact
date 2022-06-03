@@ -31,6 +31,7 @@ runs:
         path="${{ inputs.path }}"
         path=${path//'\r'/}
         path=${path//$'\n'/' '}
+        path=${path%$' '}
         echo "Adding ${path} to ${{ inputs.name }}.tar"
         tar -cvf ${{ inputs.name }}.tar ${path} --ignore-failed-read
         test -f ${{ inputs.name }}.tar && echo "${{ inputs.name }}.tar created" || echo "No files found"
