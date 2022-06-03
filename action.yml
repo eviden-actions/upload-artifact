@@ -39,7 +39,7 @@ runs:
       shell: 'bash'
       run: |
         tar tf ${{ inputs.name }}.tar | read || rm -f ${{ inputs.name }}.tar
-        test -f ${{ inputs.name }}.tar && echo "${{ inputs.name }}.tar was empty and has been removed"
+        test -f ${{ inputs.name }}.tar || echo "${{ inputs.name }}.tar was empty and has been removed"
 
     - name: '📤 upload artifact'
       uses: actions/upload-artifact@v3
