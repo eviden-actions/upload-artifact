@@ -28,19 +28,16 @@ runs:
     - name: '📦 tar inputs'
       shell: 'bash'
       run: |
-        path="${{ inputs.path }}"
-        path=${path//'\r'/}
-        path=${path//$'\n'/' '}
-        path=${path%$' '}
-        echo "Adding ${path} to ${{ inputs.name }}.tar"
-        tar -cvf ${{ inputs.name }}.tar ${path} --ignore-failed-read
+        for x in ${{ inputs.path }}; do
+            # exit the loop if no file matching inputs.path exists
+            if test -e "$x"; then
+              # at least one path exists and tar won't be empty
+              tar -cvf ${{ inputs.name }}.tar ${{ inputs.path }} --ignore-failed-read
+              # exit the loop since the tar was created
+              break
+            fi
+        done
         test -f ${{ inputs.name }}.tar && echo "${{ inputs.name }}.tar created" || echo "No files found"
-
-    - name: '🗑️ remove empty tar'
-      shell: 'bash'
-      run: |
-        tar tf ${{ inputs.name }}.tar | read || rm -f ${{ inputs.name }}.tar
-        test -f ${{ inputs.name }}.tar || echo "${{ inputs.name }}.tar was empty and has been removed"
 
     - name: '📤 upload artifact'
       uses: actions/upload-artifact@v3
