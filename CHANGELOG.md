@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/ATOS-Actions/upload-artifact/compare/v1.0.3...v1.0.4) (2022-06-07)
+
+
+### Bug Fixes
+
+* check existing file before creating tar ([#9](https://github.com/ATOS-Actions/upload-artifact/issues/9)) ([c6e7904](https://github.com/ATOS-Actions/upload-artifact/commit/c6e790438477e82fb61892ea2325248cb1cf4e4c))
+
 ## [1.0.3](https://github.com/ATOS-Actions/upload-artifact/compare/v1.0.2...v1.0.3) (2022-06-03)
 
 
