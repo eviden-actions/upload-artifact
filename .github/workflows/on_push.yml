@@ -11,8 +11,13 @@ on:
       - alpha
 
 jobs:
+  cancel-runs:
+    name: '▶️ actions'
+    uses: ATOS-Actions/actions/.github/workflows/cancel-workflow.yml@v1
+
   lint-code:
     name: '▶️ actions'
+    needs: [cancel-runs]
     uses: ATOS-Actions/actions/.github/workflows/lint-code.yml@v1
 
   test:
