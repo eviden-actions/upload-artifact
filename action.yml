@@ -33,7 +33,7 @@ runs:
         input_path=${input_path//'\r'/}
         input_path=${input_path//$'\n'/' '}
         input_path=${input_path%$' '}
-        echo "::set-output name=input_path::$input_path"
+        echo "input_path=$input_path" >> $GITHUB_OUTPUT
 
     - name: '📦 tar inputs'
       shell: 'bash'
