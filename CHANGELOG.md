@@ -1,3 +1,15 @@
+## [1.0.5](https://github.com/ATOS-Actions/upload-artifact/compare/v1.0.4...v1.0.5) (2022-10-13)
+
+
+### Bug Fixes
+
+* update deprecated set-ouput to new environment file ([b9416e6](https://github.com/ATOS-Actions/upload-artifact/commit/b9416e6100b2722e751b2767c11910999a4bb5d0))
+
+
+### Dependencies and Other Build Updates
+
+* auto release dependencies updates ([#18](https://github.com/ATOS-Actions/upload-artifact/issues/18)) ([53cb26d](https://github.com/ATOS-Actions/upload-artifact/commit/53cb26da9edd387413fe6fad96b86ea66cccb845))
+
 ## [1.0.4](https://github.com/ATOS-Actions/upload-artifact/compare/v1.0.3...v1.0.4) (2022-06-07)
 
 
