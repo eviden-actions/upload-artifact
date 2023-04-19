@@ -58,4 +58,4 @@ jobs:
           retention-days: 5
 
       - name: '🧹 Cleanup workspace'
-        uses: ATOS-Actions/clean-self-hosted-runner@v1
+        uses: eviden-actions/clean-self-hosted-runner@v1

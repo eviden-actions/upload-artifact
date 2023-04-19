@@ -1,5 +1,5 @@
 {
-	"name": "@atos-actions/upload-artifact",
+	"name": "@eviden-actions/upload-artifact",
 	"description": "Upload a tar build artifact that can be used by subsequent workflow steps",
 	"keywords": [
 		"Actions",
@@ -10,9 +10,9 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/ATOS-Actions/upload-artifact.git"
+		"url": "https://github.com/eviden-actions/upload-artifact.git"
 	},
-	"bugs": "https://github.com/ATOS-Actions/upload-artifact/issues",
+	"bugs": "https://github.com/eviden-actions/upload-artifact/issues",
 	"license": "MIT",
 	"private": "true",
 	"version": "1.0.5",

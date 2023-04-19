@@ -3,9 +3,9 @@
 This uploads artifacts from your workflow allowing you to share data between jobs and store data once a workflow is complete.
 This action is an extension of Github's [upload-artifact](https://github.com/actions/upload-artifact) action that `tar` the files before uploading.
 
-See also [download-artifact](https://github.com/ATOS-Actions/download-artifact).
+See also [download-artifact](https://github.com/eviden-actions/download-artifact).
 
-[![Release](https://github.com/ATOS-Actions/upload-artifact/actions/workflows/on_push.yml/badge.svg#main)](https://github.com/ATOS-Actions/upload-artifact/actions/workflows/on_push.yml)
+[![Release](https://github.com/eviden-actions/upload-artifact/actions/workflows/on_push.yml/badge.svg#main)](https://github.com/eviden-actions/upload-artifact/actions/workflows/on_push.yml)
 
 ## Usage
 
@@ -21,7 +21,7 @@ steps:
 
   - run: echo hello > path/to/artifact/world.txt
 
-  - uses: atos-actions/upload-artifact@v1
+  - uses: eviden-actions/upload-artifact@v1
     with:
       name: my-artifact
       path: path/to/artifact/world.txt
@@ -30,7 +30,7 @@ steps:
 ### Upload an Entire Directory
 
 ```yaml
-- uses: atos-actions/upload-artifact@v1
+- uses: eviden-actions/upload-artifact@v1
   with:
     name: my-artifact
     path: path/to/artifact/ # or path/to/artifact
@@ -39,7 +39,7 @@ steps:
 ### Upload using a Wildcard Pattern
 
 ```yaml
-- uses: atos-actions/upload-artifact@v1
+- uses: eviden-actions/upload-artifact@v1
   with:
     name: my-artifact
     path: path/**/[abc]rtifac?/*
@@ -48,7 +48,7 @@ steps:
 ### Upload using Multiple Paths and Exclusions
 
 ```yaml
-- uses: atos-actions/upload-artifact@v1
+- uses: eviden-actions/upload-artifact@v1
   with:
     name: my-artifact
     path: |
@@ -84,7 +84,7 @@ The [@actions/artifact](https://github.com/actions/toolkit/tree/main/packages/ar
 If a path (or paths), result in no files being found for the artifact, the action will succeed but print out a warning. In certain scenarios it may be desirable to fail the action or suppress the warning. The `if-no-files-found` option allows you to customize the behavior of the action if no files are found:
 
 ```yaml
-- uses: atos-actions/upload-artifact@v1
+- uses: eviden-actions/upload-artifact@v1
   with:
     name: my-artifact
     path: path/to/artifact/
@@ -96,7 +96,7 @@ If a path (or paths), result in no files being found for the artifact, the actio
 To upload artifacts only when the previous step of a job failed, use [`if: failure()`](https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions#job-status-check-functions):
 
 ```yaml
-- uses: atos-actions/upload-artifact@v1
+- uses: eviden-actions/upload-artifact@v1
   if: failure()
   with:
     name: my-artifact
@@ -108,7 +108,7 @@ To upload artifacts only when the previous step of a job failed, use [`if: failu
 You can upload an artifact without specifying a name
 
 ```yaml
-- uses: atos-actions/upload-artifact@v1
+- uses: eviden-actions/upload-artifact@v1
   with:
     path: path/to/artifact/world.txt
 ```
@@ -121,17 +121,17 @@ With the following example, the available artifact (named `artifact` by default 
 
 ```yaml
 - run: echo hi > world.txt
-- uses: atos-actions/upload-artifact@v1
+- uses: eviden-actions/upload-artifact@v1
   with:
     path: world.txt
 
 - run: echo howdy > extra-file.txt
-- uses: atos-actions/upload-artifact@v1
+- uses: eviden-actions/upload-artifact@v1
   with:
     path: extra-file.txt
 
 - run: echo hello > world.txt
-- uses: atos-actions/upload-artifact@v1
+- uses: eviden-actions/upload-artifact@v1
   with:
     path: world.txt
 ```
@@ -146,7 +146,7 @@ steps:
   - name: Create a file
     run: echo ${{ matrix.node-version }} > my_file.txt
   - name: Accidentally upload to the same artifact via multiple jobs
-    uses: atos-actions/upload-artifact@v1
+    uses: eviden-actions/upload-artifact@v1
     with:
       name: my-artifact
       path: ${{ github.workspace }}
@@ -157,7 +157,7 @@ steps:
 In the above example, four jobs will upload four different files to the same artifact but there will only be one file available when `my-artifact` is downloaded. Each job overwrites what was previously uploaded. To ensure that jobs don't overwrite existing artifacts, use a different name per job:
 
 ```yaml
-uses: atos-actions/upload-artifact@v1
+uses: eviden-actions/upload-artifact@v1
 with:
   name: my-artifact ${{ matrix.node-version }}
   path: ${{ github.workspace }}
@@ -171,7 +171,7 @@ You can use `~` in the path input as a substitute for `$HOME`. Basic tilde expan
 - run: |
     mkdir -p ~/new/artifact
     echo hello > ~/new/artifact/world.txt
-- uses: atos-actions/upload-artifact@v1
+- uses: eviden-actions/upload-artifact@v1
   with:
     name: Artifacts-V3
     path: ~/new/**/*
@@ -186,7 +186,7 @@ steps:
   - run: |
       mkdir -p ${{ github.workspace }}/artifact
       echo hello > ${{ github.workspace }}/artifact/world.txt
-  - uses: atos-actions/upload-artifact@v1
+  - uses: eviden-actions/upload-artifact@v1
     with:
       name: ${{ env.name }}-name
       path: ${{ github.workspace }}/artifact/**/*
@@ -200,7 +200,7 @@ steps:
       mkdir testing
       echo "This is a file to upload" > testing/file.txt
       echo "artifactPath=testing/file.txt" >> $GITHUB_ENV
-  - uses: atos-actions/upload-artifact@v1
+  - uses: eviden-actions/upload-artifact@v1
     with:
       name: artifact
       path: ${{ env.artifactPath }} # this will resolve to testing/file.txt at runtime
@@ -215,7 +215,7 @@ Artifacts are retained for 90 days by default. You can specify a shorter retenti
   run: echo "I won't live long" > my_file.txt
 
 - name: Upload Artifact
-  uses: atos-actions/upload-artifact@v1
+  uses: eviden-actions/upload-artifact@v1
   with:
     name: my-artifact
     path: my_file.txt
