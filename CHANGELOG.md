@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/eviden-actions/upload-artifact/compare/v1.0.5...v1.1.0) (2023-04-19)
+
+
+### Features
+
+* rebrand to eviden-actions ([2b504b5](https://github.com/eviden-actions/upload-artifact/commit/2b504b5378430b4d7af5d7926e3b4c2933ff3562))
+
 ## [1.0.5](https://github.com/eviden-actions/upload-artifact/compare/v1.0.4...v1.0.5) (2022-10-13)
 
 
