@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/eviden-actions/upload-artifact/compare/v1.1.1...v1.1.2) (2023-11-27)
+
+
+### Bug Fixes
+
+* add branding details ([4db2744](https://github.com/eviden-actions/upload-artifact/commit/4db27440c104475bbe6ec83328315a9afe334378))
+
 ## [1.1.1](https://github.com/eviden-actions/upload-artifact/compare/v1.1.0...v1.1.1) (2023-11-27)
 
 
