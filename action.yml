@@ -1,5 +1,5 @@
-name: 'Upload a Build Artifact'
-description: 'Tar and upload a build artifact that can be used by subsequent workflow steps'
+name: 'Tar and Upload a Build Artifact'
+description: 'Pack files in a tar archive and upload a build artifact that can be used by subsequent workflow steps'
 
 inputs:
   name:
