@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/eviden-actions/upload-artifact/compare/v1.1.0...v1.1.1) (2023-11-27)
+
+
+### Bug Fixes
+
+* update action name ([95aa4ae](https://github.com/eviden-actions/upload-artifact/commit/95aa4ae27dd7fa45e3037cd5ee183cb0ba59aee8))
+
 ## [1.1.0](https://github.com/eviden-actions/upload-artifact/compare/v1.0.5...v1.1.0) (2023-04-19)
 
 
