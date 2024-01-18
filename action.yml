@@ -55,7 +55,7 @@ runs:
         test -f ${{ inputs.name }}.tar && echo "${{ inputs.name }}.tar created" || echo "No files found"
 
     - name: '📤 upload artifact'
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ inputs.name }}
         path: ${{ inputs.name }}.tar
