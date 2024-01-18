@@ -37,15 +37,15 @@
 		"test": "echo 'No test script defined for this project'"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^18.4.3",
-		"@commitlint/config-conventional": "^18.4.3",
+		"@commitlint/cli": "^18.4.4",
+		"@commitlint/config-conventional": "^18.4.4",
 		"@semantic-release/changelog": "^6.0.3",
 		"@semantic-release/git": "^10.0.1",
 		"husky": "^8.0.3",
-		"prettier": "^3.1.1"
+		"prettier": "^3.2.4"
 	},
 	"optionalDependencies": {
 		"pretty-quick": "^3.1.0",
-		"semantic-release": "^22.0.12"
+		"semantic-release": "^23.0.0"
 	}
 }
