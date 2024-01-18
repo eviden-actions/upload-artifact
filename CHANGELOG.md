@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/eviden-actions/upload-artifact/compare/v1.1.2...v1.1.3) (2024-01-18)
+
+
+### Bug Fixes
+
+* revert "chore(deps): bump actions/upload-artifact from 3 to 4" ([#120](https://github.com/eviden-actions/upload-artifact/issues/120)) ([9557a08](https://github.com/eviden-actions/upload-artifact/commit/9557a08fd26e368e1abbaec52c425cf4d061c072)), closes [#119](https://github.com/eviden-actions/upload-artifact/issues/119)
+
 ## [1.1.2](https://github.com/eviden-actions/upload-artifact/compare/v1.1.1...v1.1.2) (2023-11-27)
 
 
