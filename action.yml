@@ -12,6 +12,9 @@ inputs:
   path:
     description: 'A file, directory or wildcard pattern that describes what to upload'
     required: true
+  directory:
+    description: 'Change to DIR before performing any operations. This option is order-sensitive, i.e. it affects all optionsthat follow.'
+    default: '.'
   if-no-files-found:
     description: >
       The desired behavior if no files are found using the provided path.
@@ -46,8 +49,8 @@ runs:
             # exit the loop if no file matching inputs.path exists
             if test -e "$x"; then
               # at least one path exists and tar won't be empty
-              tar -cvf ${{ inputs.name }}.tar ${{ steps.input_path.outputs.input_path }} --ignore-failed-read
-              echo "Adding ${{ steps.input_path.outputs.input_path }} to ${{ inputs.name }}.tar"
+              tar -cvf ${{ inputs.name }}.tar -C ${{ inputs.directory }} ${{ steps.input_path.outputs.input_path }} --ignore-failed-read
+              echo "Adding ${{ steps.input_path.outputs.input_path }} from ${{ inputs.directory }} to ${{ inputs.name }}.tar"
               # exit the loop since the tar was created
               break
             fi
