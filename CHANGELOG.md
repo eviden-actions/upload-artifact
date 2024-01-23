@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/eviden-actions/upload-artifact/compare/v1.1.3...v1.2.0) (2024-01-23)
+
+
+### Features
+
+* add the ability to change the directory from which to create th… ([#131](https://github.com/eviden-actions/upload-artifact/issues/131)) ([319c2a7](https://github.com/eviden-actions/upload-artifact/commit/319c2a715d66c3fcbdc29b671f55353eb467f36a))
+
 ## [1.1.3](https://github.com/eviden-actions/upload-artifact/compare/v1.1.2...v1.1.3) (2024-01-18)
 
 
