@@ -1,3 +1,14 @@
+## [2.0.0](https://github.com/eviden-actions/upload-artifact/compare/v1.2.0...v2.0.0) (2024-02-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** https://github.com/actions/upload-artifact/blob/main/README.md#breaking-changes
+
+### Features
+
+* **deps:** bump actions/upload-artifact from v3 to v4 ([#147](https://github.com/eviden-actions/upload-artifact/issues/147)) ([ea87192](https://github.com/eviden-actions/upload-artifact/commit/ea87192e095de1e80e1bf27054c4248f041ab8de))
+
 ## [1.2.0](https://github.com/eviden-actions/upload-artifact/compare/v1.1.3...v1.2.0) (2024-01-23)
 
 

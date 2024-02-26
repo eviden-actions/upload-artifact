@@ -15,7 +15,7 @@
 	"bugs": "https://github.com/eviden-actions/upload-artifact/issues",
 	"license": "MIT",
 	"private": "true",
-	"version": "1.2.0",
+	"version": "2.0.0",
 	"engines": {
 		"node": ">= 16.0.0",
 		"npm": ">= 8.0.0"
