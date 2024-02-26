@@ -7,12 +7,12 @@ See also [download-artifact](https://github.com/eviden-actions/download-artifact
 
 [![Release](https://github.com/eviden-actions/upload-artifact/actions/workflows/on_push.yml/badge.svg#main)](https://github.com/eviden-actions/upload-artifact/actions/workflows/on_push.yml)
 
-## v4 - What's new
+## v2 - What's new
 
 > [!IMPORTANT]
-> upload-artifact@v4+ is not currently supported on GHES yet. If you are on GHES, you must use [v3](https://github.com/actions/upload-artifact/releases/tag/v3).
+> actions/upload-artifact@v4+ is not currently supported on GHES yet. If you are on GHES, you must use [v1](https://github.com/eviden-actions/upload-artifact/releases/tag/v1).
 
-The release of upload-artifact@v4 and download-artifact@v4 are major changes to the backend architecture of Artifacts. They have numerous performance and behavioral improvements.
+The release of actions/upload-artifact@v4 and actions/download-artifact@v4 are major changes to the backend architecture of Artifacts. They have numerous performance and behavioral improvements.
 
 For more information, see the [`@actions/artifact`](https://github.com/actions/toolkit/tree/main/packages/artifact) documentation.
 
