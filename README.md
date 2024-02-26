@@ -7,7 +7,6 @@ See also [download-artifact](https://github.com/eviden-actions/download-artifact
 
 [![Release](https://github.com/eviden-actions/upload-artifact/actions/workflows/on_push.yml/badge.svg#main)](https://github.com/eviden-actions/upload-artifact/actions/workflows/on_push.yml)
 
-
 ## v4 - What's new
 
 > [!IMPORTANT]
@@ -31,7 +30,7 @@ There is also a new sub-action, `actions/upload-artifact/merge`. For more info, 
 1. On self hosted runners, additional [firewall rules](https://github.com/actions/toolkit/tree/main/packages/artifact#breaking-changes) may be required.
 2. Uploading to the same named Artifact multiple times.
 
-    Due to how Artifacts are created in this new version, it is no longer possible to upload to the same named Artifact multiple times. You must either split the uploads into multiple Artifacts with different names, or only upload once. Otherwise you _will_ encounter an error.
+   Due to how Artifacts are created in this new version, it is no longer possible to upload to the same named Artifact multiple times. You must either split the uploads into multiple Artifacts with different names, or only upload once. Otherwise you _will_ encounter an error.
 
 3. Limit of Artifacts for an individual job. Each job in a workflow run now has a limit of 500 artifacts.
 
@@ -81,9 +80,9 @@ For assistance with breaking changes, see [MIGRATION.md](docs/MIGRATION.md).
 
 ### Outputs
 
-| Name | Description | Example |
-| - | - | - |
-| `artifact-id` | GitHub ID of an Artifact, can be used by the REST API | `1234` |
+| Name           | Description                                                                                                                                                                                                                                                                                   | Example                                                                     |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `artifact-id`  | GitHub ID of an Artifact, can be used by the REST API                                                                                                                                                                                                                                         | `1234`                                                                      |
 | `artifact-url` | URL to download an Artifact. Can be used in many scenarios such as linking to artifacts in issues or pull requests. Users must be logged-in in order for this URL to work. This URL is valid as long as the artifact has not expired or the artifact, run or repository have not been deleted | `https://github.com/example-org/example-repo/actions/runs/1/artifacts/1234` |
 
 ## Examples
@@ -92,12 +91,12 @@ For assistance with breaking changes, see [MIGRATION.md](docs/MIGRATION.md).
 
 ```yaml
 steps:
-- run: mkdir -p path/to/artifact
-- run: echo hello > path/to/artifact/world.txt
-- uses: actions/upload-artifact@v4
-  with:
-    name: my-artifact
-    path: path/to/artifact/world.txt
+  - run: mkdir -p path/to/artifact
+  - run: echo hello > path/to/artifact/world.txt
+  - uses: actions/upload-artifact@v4
+    with:
+      name: my-artifact
+      path: path/to/artifact/world.txt
 ```
 
 ### Upload an Entire Directory
@@ -155,10 +154,11 @@ Relative and absolute file paths are both allowed. Relative paths are rooted aga
 If you are uploading large or easily compressable data to your artifact, you may benefit from tweaking the compression level. By default, the compression level is `6`, the same as GNU Gzip.
 
 The value can range from 0 to 9:
-  - 0: No compression
-  - 1: Best speed
-  - 6: Default compression (same as GNU Gzip)
-  - 9: Best compression
+
+- 0: No compression
+- 1: Best speed
+- 6: Default compression (same as GNU Gzip)
+- 9: Best compression
 
 Higher levels will result in better compression, but will take longer to complete.
 For large files that are not easily compressed, a value of `0` is recommended for significantly faster uploads.
@@ -236,13 +236,13 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-    - name: Build
-      run: ./some-script --version=${{ matrix.version }} > my-binary
-    - name: Upload
-      uses: actions/upload-artifact@v4
-      with:
-        name: binary-${{ matrix.os }}-${{ matrix.version }}
-        path: my-binary
+      - name: Build
+        run: ./some-script --version=${{ matrix.version }} > my-binary
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: binary-${{ matrix.os }}-${{ matrix.version }}
+          path: my-binary
 ```
 
 This will result in artifacts like: `binary-ubuntu-latest-a`, `binary-windows-latest-b`, and so on.
@@ -254,42 +254,42 @@ Previously the behavior _allowed_ for the artifact names to be the same which re
 You can use `~` in the path input as a substitute for `$HOME`. Basic tilde expansion is supported:
 
 ```yaml
-  - run: |
-      mkdir -p ~/new/artifact
-      echo hello > ~/new/artifact/world.txt
-  - uses: actions/upload-artifact@v4
-    with:
-      name: my-artifacts
-      path: ~/new/**/*
+- run: |
+    mkdir -p ~/new/artifact
+    echo hello > ~/new/artifact/world.txt
+- uses: actions/upload-artifact@v4
+  with:
+    name: my-artifacts
+    path: ~/new/**/*
 ```
 
 Environment variables along with context expressions can also be used for input. For documentation see [context and expression syntax](https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions):
 
 ```yaml
-    env:
-      name: my-artifact
-    steps:
-    - run: |
-        mkdir -p ${{ github.workspace }}/artifact
-        echo hello > ${{ github.workspace }}/artifact/world.txt
-    - uses: actions/upload-artifact@v4
-      with:
-        name: ${{ env.name }}-name
-        path: ${{ github.workspace }}/artifact/**/*
+env:
+  name: my-artifact
+steps:
+  - run: |
+      mkdir -p ${{ github.workspace }}/artifact
+      echo hello > ${{ github.workspace }}/artifact/world.txt
+  - uses: actions/upload-artifact@v4
+    with:
+      name: ${{ env.name }}-name
+      path: ${{ github.workspace }}/artifact/**/*
 ```
 
 For environment variables created in other steps, make sure to use the `env` expression syntax
 
 ```yaml
-    steps:
-    - run: |
-        mkdir testing
-        echo "This is a file to upload" > testing/file.txt
-        echo "artifactPath=testing/file.txt" >> $GITHUB_ENV
-    - uses: actions/upload-artifact@v4
-      with:
-        name: artifact
-        path: ${{ env.artifactPath }} # this will resolve to testing/file.txt at runtime
+steps:
+  - run: |
+      mkdir testing
+      echo "This is a file to upload" > testing/file.txt
+      echo "artifactPath=testing/file.txt" >> $GITHUB_ENV
+  - uses: actions/upload-artifact@v4
+    with:
+      name: artifact
+      path: ${{ env.artifactPath }} # this will resolve to testing/file.txt at runtime
 ```
 
 ### Retention Period
@@ -297,15 +297,15 @@ For environment variables created in other steps, make sure to use the `env` exp
 Artifacts are retained for 90 days by default. You can specify a shorter retention period using the `retention-days` input:
 
 ```yaml
-  - name: Create a file
-    run: echo "I won't live long" > my_file.txt
+- name: Create a file
+  run: echo "I won't live long" > my_file.txt
 
-  - name: Upload Artifact
-    uses: actions/upload-artifact@v4
-    with:
-      name: my-artifact
-      path: my_file.txt
-      retention-days: 5
+- name: Upload Artifact
+  uses: actions/upload-artifact@v4
+  with:
+    name: my-artifact
+    path: my_file.txt
+    retention-days: 5
 ```
 
 The retention period must be between 1 and 90 inclusive. For more information see [artifact and log retention policies](https://docs.github.com/en/free-pro-team@latest/actions/reference/usage-limits-billing-and-administration#artifact-and-log-retention-policy).
@@ -317,14 +317,14 @@ If an artifact upload is successful then an `artifact-id` output is available. T
 #### Example output between steps
 
 ```yml
-    - uses: actions/upload-artifact@v4
-      id: artifact-upload-step
-      with:
-        name: my-artifact
-        path: path/to/artifact/content/
+- uses: actions/upload-artifact@v4
+  id: artifact-upload-step
+  with:
+    name: my-artifact
+    path: path/to/artifact/content/
 
-    - name: Output artifact ID
-      run:  echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}'
+- name: Output artifact ID
+  run: echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}'
 ```
 
 #### Example output between jobs
