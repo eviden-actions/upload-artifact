@@ -149,6 +149,20 @@ If multiple paths are provided as input, the least common ancestor of all the se
 
 Relative and absolute file paths are both allowed. Relative paths are rooted against the current working directory. Paths that begin with a wildcard character should be quoted to avoid being interpreted as YAML aliases.
 
+### Create the archive from a different directory
+
+Change to DIR before performing any tar operations.
+
+The example below with add the folder `artifact` that is located inside the folder `path` to the archive before uploading it.
+
+```yaml
+- uses: actions/upload-artifact@v4
+  with:
+    name: my-artifact
+    path: artifact/
+    directory: path
+```
+
 ### Altering compressions level (speed v. size)
 
 If you are uploading large or easily compressable data to your artifact, you may benefit from tweaking the compression level. By default, the compression level is `6`, the same as GNU Gzip.
