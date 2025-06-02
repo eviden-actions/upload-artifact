@@ -45,7 +45,7 @@
 		"prettier": "^3.5.3"
 	},
 	"optionalDependencies": {
-		"pretty-quick": "^4.1.1",
+		"pretty-quick": "^4.2.2",
 		"semantic-release": "^24.2.5"
 	}
 }
