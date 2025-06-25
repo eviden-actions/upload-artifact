@@ -42,7 +42,7 @@
 		"@semantic-release/changelog": "^6.0.3",
 		"@semantic-release/git": "^10.0.1",
 		"husky": "^9.1.7",
-		"prettier": "^3.6.0"
+		"prettier": "^3.6.1"
 	},
 	"optionalDependencies": {
 		"pretty-quick": "^4.2.2",
