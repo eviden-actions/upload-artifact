@@ -10,7 +10,9 @@ inputs:
     description: 'Artifact name'
     default: 'artifact'
   path:
-    description: 'A file, directory or wildcard pattern that describes what to upload'
+    description: >
+      A file, directory or wildcard pattern (one per line) that describes what to upload.
+      Lines starting with '!' are treated as exclusion patterns and will be omitted from the archive (passed to tar via --exclude).
     required: true
   directory:
     description: 'Change to DIR before performing any operations. This option is order-sensitive, i.e. it affects all optionsthat follow.'
@@ -71,26 +73,70 @@ runs:
       id: input_path
       shell: 'bash'
       run: |
-        input_path="${{ inputs.path }}"
-        input_path=${input_path//'\r'/}
-        input_path=${input_path//$'\n'/' '}
-        input_path=${input_path%$' '}
-        echo "input_path=$input_path" >> $GITHUB_OUTPUT
+        # Original multi-line input (may contain inclusions and exclusions starting with '!')
+        raw_input="${{ inputs.path }}"
+        # Normalize line endings (remove CR)
+        raw_input=${raw_input//$'\r'/}
+
+        include_path=""
+        exclude_path=""
+
+        # Iterate over each (non-empty) line preserving patterns; lines starting with '!' are exclusions
+        while IFS= read -r line; do
+          # Trim leading/trailing whitespace
+            trimmed=$(echo "$line" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+            [ -z "$trimmed" ] && continue
+            if [[ "$trimmed" == !* ]]; then
+              pattern=${trimmed:1}
+              [ -n "$pattern" ] && exclude_path+="$pattern "
+            else
+              include_path+="$trimmed "
+            fi
+        done <<< "$raw_input"
+
+        # Remove trailing spaces
+        include_path=${include_path%$' '}
+        exclude_path=${exclude_path%$' '}
+
+        echo "include_path=$include_path" >> $GITHUB_OUTPUT
+        echo "exclude_path=$exclude_path" >> $GITHUB_OUTPUT
+        echo "Include patterns: $include_path"
+        echo "Exclude patterns: $exclude_path"
 
     - name: '📦 tar inputs'
       shell: 'bash'
       run: |
-        for x in ${{ steps.input_path.outputs.input_path }}; do
-            # exit the loop if no file matching inputs.path exists
-            if test -e "$x"; then
-              # at least one path exists and tar won't be empty
-              tar -cvf ${{ inputs.name }}.tar -C ${{ inputs.directory }} ${{ steps.input_path.outputs.input_path }} --ignore-failed-read
-              echo "Adding ${{ steps.input_path.outputs.input_path }} from ${{ inputs.directory }} to ${{ inputs.name }}.tar"
-              # exit the loop since the tar was created
-              break
-            fi
+        includes="${{ steps.input_path.outputs.include_path }}"
+        excludes="${{ steps.input_path.outputs.exclude_path }}"
+
+        # Determine if at least one include exists (pattern existence check is best-effort)
+        archive_created=false
+        for x in $includes; do
+          if compgen -G "$x" > /dev/null 2>&1 || test -e "$x"; then
+            # Build tar command with optional --exclude patterns BEFORE the file list
+            cmd=(tar -cvf "${{ inputs.name }}.tar" -C "${{ inputs.directory }}")
+            for e in $excludes; do
+              # Use --exclude to omit the pattern (note: user requested -x, but -x is extract; --exclude is the correct flag)
+              cmd+=(--exclude="$e")
+            done
+            # shellcheck disable=SC2206
+            cmd+=(--ignore-failed-read)
+            file_list=( $includes )
+            cmd+=("${file_list[@]}")
+
+            echo "Running: ${cmd[*]}"
+            "${cmd[@]}"
+            echo "Adding $includes (excluding: $excludes) from ${{ inputs.directory }} to ${{ inputs.name }}.tar"
+            archive_created=true
+            break
+          fi
         done
-        test -f ${{ inputs.name }}.tar && echo "${{ inputs.name }}.tar created" || echo "No files found"
+
+        if $archive_created; then
+          echo "${{ inputs.name }}.tar created"
+        else
+          echo "No files found"
+        fi
 
     - name: '📤 upload artifact'
       id: upload-artifact

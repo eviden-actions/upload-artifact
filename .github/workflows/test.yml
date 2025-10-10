@@ -57,5 +57,71 @@ jobs:
             README.md
           retention-days: 5
 
+      - name: '✅ Test exclusion (exclude LICENSE)'
+        uses: ./
+        with:
+          name: 'artifact_exclude_license'
+          path: |
+            README.md
+            LICENSE
+            !LICENSE
+          retention-days: 5
+
+      - name: '⬇️ Download exclusion (exclude LICENSE)'
+        uses: actions/download-artifact@v4
+        with:
+          name: artifact_exclude_license
+          path: .
+
+      - name: '🔍 Verify exclusion (exclude LICENSE)'
+        shell: bash
+        run: |
+          echo 'Listing contents of artifact_exclude_license.tar'
+          tar -tf artifact_exclude_license.tar || (echo 'Tar list failed' && exit 1)
+          contents=$(tar -tf artifact_exclude_license.tar)
+          echo "Contents: $contents"
+          if echo "$contents" | grep -q 'LICENSE'; then
+            echo 'ERROR: LICENSE was found but should have been excluded'
+            exit 1
+          fi
+          if ! echo "$contents" | grep -q 'README.md'; then
+            echo 'ERROR: README.md not found (should be included)'
+            exit 1
+          fi
+          echo 'Exclusion test (LICENSE) passed.'
+
+      - name: '✅ Test exclusion (exclude *.md)'
+        uses: ./
+        with:
+          name: 'artifact_exclude_markdown'
+          path: |
+            README.md
+            LICENSE
+            !*.md
+          retention-days: 5
+
+      - name: '⬇️ Download exclusion (exclude *.md)'
+        uses: actions/download-artifact@v4
+        with:
+          name: artifact_exclude_markdown
+          path: .
+
+      - name: '🔍 Verify exclusion (exclude *.md)'
+        shell: bash
+        run: |
+          echo 'Listing contents of artifact_exclude_markdown.tar'
+          tar -tf artifact_exclude_markdown.tar || (echo 'Tar list failed' && exit 1)
+          contents=$(tar -tf artifact_exclude_markdown.tar)
+          echo "Contents: $contents"
+          if echo "$contents" | grep -q 'README.md'; then
+            echo 'ERROR: README.md was found but should have been excluded by pattern !*.md'
+            exit 1
+          fi
+          if ! echo "$contents" | grep -q 'LICENSE'; then
+            echo 'ERROR: LICENSE not found (should be included)'
+            exit 1
+          fi
+          echo 'Exclusion test (*.md) passed.'
+
       - name: '🧹 Cleanup workspace'
         uses: eviden-actions/clean-self-hosted-runner@v1
