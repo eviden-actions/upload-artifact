@@ -1,3 +1,9 @@
+## [2.0.1](https://github.com/eviden-actions/upload-artifact/compare/v2.0.0...v2.0.1) (2025-10-10)
+
+### Bug Fixes
+
+* update tar creation to support exclusion patterns in path input ([#233](https://github.com/eviden-actions/upload-artifact/issues/233)) ([f65999b](https://github.com/eviden-actions/upload-artifact/commit/f65999b23a982abe8a5e9bff6b82b28f954fa5cd))
+
 ## [2.0.0](https://github.com/eviden-actions/upload-artifact/compare/v1.2.0...v2.0.0) (2024-02-26)
 
 
