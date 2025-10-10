@@ -98,7 +98,7 @@ runs:
         include_path=${include_path%$' '}
         exclude_path=${exclude_path%$' '}
 
-        echo "input_path=$include_path" >> $GITHUB_OUTPUT
+        echo "include_path=$include_path" >> $GITHUB_OUTPUT
         echo "exclude_path=$exclude_path" >> $GITHUB_OUTPUT
         echo "Include patterns: $include_path"
         echo "Exclude patterns: $exclude_path"
@@ -106,7 +106,7 @@ runs:
     - name: '📦 tar inputs'
       shell: 'bash'
       run: |
-        includes="${{ steps.input_path.outputs.input_path }}"
+        includes="${{ steps.input_path.outputs.include_path }}"
         excludes="${{ steps.input_path.outputs.exclude_path }}"
 
         # Determine if at least one include exists (pattern existence check is best-effort)
