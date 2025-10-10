@@ -120,9 +120,9 @@ runs:
               cmd+=(--exclude="$e")
             done
             # shellcheck disable=SC2206
+            cmd+=(--ignore-failed-read)
             file_list=( $includes )
             cmd+=("${file_list[@]}")
-            cmd+=(--ignore-failed-read)
 
             echo "Running: ${cmd[*]}"
             "${cmd[@]}"
