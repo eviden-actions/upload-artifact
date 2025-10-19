@@ -46,7 +46,7 @@
 	},
 	"optionalDependencies": {
 		"pretty-quick": "^4.2.2",
-		"semantic-release": "^25.0.0"
+		"semantic-release": "^25.0.1"
 	},
 	"overrides": {
 		"conventional-changelog-conventionalcommits": ">= 8.0.0"
