@@ -68,7 +68,7 @@ jobs:
           retention-days: 5
 
       - name: '⬇️ Download exclusion (exclude LICENSE)'
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           name: artifact_exclude_license
           path: .
@@ -101,7 +101,7 @@ jobs:
           retention-days: 5
 
       - name: '⬇️ Download exclusion (exclude *.md)'
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           name: artifact_exclude_markdown
           path: .
