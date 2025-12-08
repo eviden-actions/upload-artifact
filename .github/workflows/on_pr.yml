@@ -19,7 +19,7 @@ jobs:
   lint-code:
     name: '▶️ actions'
     needs: [cancel-runs]
-    uses: eviden-actions/actions/.github/workflows/lint-code.yml@v2
+    uses: eviden-actions/actions/.github/workflows/lint-code.yml@v3
 
   test:
     name: '📌'
