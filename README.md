@@ -5,7 +5,7 @@ This action is an extension of Github's [upload-artifact](https://github.com/act
 
 See also [download-artifact](https://github.com/eviden-actions/download-artifact).
 
-[![Release](https://github.com/eviden-actions/upload-artifact/actions/workflows/on_push.yml/badge.svg#main)](https://github.com/eviden-actions/upload-artifact/actions/workflows/on_push.yml)
+[![Release](https://github.com/eviden-actions/upload-artifact/actions/workflows/release.yml/badge.svg#main)](https://github.com/eviden-actions/upload-artifact/actions/workflows/release.yml)
 
 ## v2 - What's new
 
