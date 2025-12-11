@@ -1,3 +1,9 @@
+## [2.0.2](https://github.com/atos-actions/upload-artifact/compare/v2.0.1...v2.0.2) (2025-12-11)
+
+### Bug Fixes
+
+* rebrand repository from Eviden to Atos ([#254](https://github.com/atos-actions/upload-artifact/issues/254)) ([18b2502](https://github.com/atos-actions/upload-artifact/commit/18b250276e4f874123338e3ab40b4802db12ad9b))
+
 ## [2.0.1](https://github.com/eviden-actions/upload-artifact/compare/v2.0.0...v2.0.1) (2025-10-10)
 
 ### Bug Fixes
