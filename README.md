@@ -3,14 +3,14 @@
 This uploads artifacts from your workflow allowing you to share data between jobs and store data once a workflow is complete.
 This action is an extension of Github's [upload-artifact](https://github.com/actions/upload-artifact) action that `tar` the files before uploading.
 
-See also [download-artifact](https://github.com/eviden-actions/download-artifact).
+See also [download-artifact](https://github.com/atos-actions/download-artifact).
 
-[![Release](https://github.com/eviden-actions/upload-artifact/actions/workflows/release.yml/badge.svg#main)](https://github.com/eviden-actions/upload-artifact/actions/workflows/release.yml)
+[![Release](https://github.com/atos-actions/upload-artifact/actions/workflows/release.yml/badge.svg#main)](https://github.com/atos-actions/upload-artifact/actions/workflows/release.yml)
 
 ## v2 - What's new
 
 > [!IMPORTANT]
-> actions/upload-artifact@v4+ is not currently supported on GHES yet. If you are on GHES, you must use [v1](https://github.com/eviden-actions/upload-artifact/releases/tag/v1).
+> actions/upload-artifact@v4+ is not currently supported on GHES yet. If you are on GHES, you must use [v1](https://github.com/atos-actions/upload-artifact/releases/tag/v1).
 
 The release of actions/upload-artifact@v4 and actions/download-artifact@v4 are major changes to the backend architecture of Artifacts. They have numerous performance and behavioral improvements.
 
