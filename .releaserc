@@ -21,6 +21,10 @@
 						"type": "build",
 						"scope": "deps",
 						"release": "patch"
+					},
+					{
+						"breaking": true,
+						"release": "major"
 					}
 				]
 			}
