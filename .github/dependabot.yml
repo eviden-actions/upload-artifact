@@ -27,3 +27,6 @@ updates:
         patterns:
           - 'atos-actions/*'
           - 'eviden-actions/*'
+      actions-artifacts:
+        patterns:
+          - 'actions/*-artifact'
