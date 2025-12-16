@@ -15,7 +15,7 @@
 	"bugs": "https://github.com/atos-actions/upload-artifact/issues",
 	"license": "MIT",
 	"private": "true",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"engines": {
 		"node": ">= 16.0.0",
 		"npm": ">= 8.0.0"
