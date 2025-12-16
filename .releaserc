@@ -18,13 +18,13 @@
 				"preset": "conventionalcommits",
 				"releaseRules": [
 					{
+						"breaking": true,
+						"release": "major"
+					},
+					{
 						"type": "build",
 						"scope": "deps",
 						"release": "patch"
-					},
-					{
-						"breaking": true,
-						"release": "major"
 					}
 				]
 			}
