@@ -140,7 +140,7 @@ runs:
 
     - name: '📤 upload artifact'
       id: upload-artifact
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: ${{ inputs.name }}
         path: ${{ inputs.name }}.tar
